@@ -146,8 +146,7 @@ All colors MUST be HSL.
 @keyframes fadeUp {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
-=======
+}
 .bg-grey-max{
   background-color: #B5B0AD;
->>>>>>> Stashed changes
 }
