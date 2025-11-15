@@ -3,7 +3,6 @@ import pandas as pd
 import tensorflow as tf
 import sklearn
 from sklearn.model_selection import train_test_split
-import numpy as np
 
 # read dataset
 df = pd.read_csv('data/dataset.csv')
@@ -28,12 +27,14 @@ model.add(Dense(units=1, activation='sigmoid'))
 adam = tf.keras.optimizers.Adam(learning_rate=0.001)
 model.compile(loss='binary_crossentropy', optimizer=adam, metrics=["accuracy"])
 
-# fit training data to the model with corresponding epochs
+# train model with epochs
 model.fit(X, Y, epochs=100)
 
-# train model and put predictions into y_hat
+# make prediction with training data to evaluate learning
+# accuracy, this does not necessarily reflect actual score
 y_hat = model.predict(X)
-y_hat = [0 if val < 0.5 else 1 for val in y_hat]
+#y_hat = [0 if val < 0.5 else 1 for val in y_hat]
+# this line would be used to put results in 0 or 1 depending on threshold
 
 # calculate score metrics: accuracy and f1
 from sklearn.metrics import f1_score
@@ -43,8 +44,8 @@ print("Accuracy: ", acu)
 print("F1: ", f1)
 
 # save model to disk
-model.save('Schneider NN Model')
+model.save('SchneiderNNModel.h5')
 
 # to reload model:
-# model = load_model('Schneider NN Model')
+# model = load_model('SchneiderNNModel.h5')
 # works in another python file
