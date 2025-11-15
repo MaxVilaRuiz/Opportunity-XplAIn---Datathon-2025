@@ -31,7 +31,7 @@ const Study = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/10 via-accent/20 to-background">
+    <div className="min-h-screen bg-gradient-to-br from-primary/10 via-accent/20 to-primary/100">
       {/* Header with colored bar and decorative elements */}
       <header className="bg-gradient-to-r from-primary via-primary/95 to-accent h-16 flex items-center justify-center shadow-lg relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -81,7 +81,7 @@ const Study = () => {
           <Button 
             onClick={handleSubmit}
             size="lg"
-            className="group bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-bold px-8 py-6 text-lg shadow-xl transition-all duration-300 hover:scale-105"
+            className="group bg-gradient-to-r from-bg-grey-max to-grey hover:from-accent hover:to-primary/90 text-primary-foreground font-bold px-8 py-6 text-lg shadow-xl transition-all duration-300 hover:scale-105"
           >
             Enviar Formulario
             <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -89,7 +89,7 @@ const Study = () => {
         </div>
 
         {/* Bottom decorative gradient */}
-        <div className="mt-12 h-24 bg-gradient-to-t from-primary/5 to-transparent rounded-t-3xl" />
+        <div className="mt-12 h-24 bg-gradient-to-t from-transparent to-transparent rounded-t-3xl" />
       </main>
     </div>
   );
