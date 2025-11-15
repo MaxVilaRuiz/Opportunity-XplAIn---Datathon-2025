@@ -1,1 +1,7 @@
-# Delete when adding any content
+fastapi
+uvicorn
+pydantic
+numpy
+scikit-learn
+joblib
+shap
