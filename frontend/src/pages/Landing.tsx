@@ -35,7 +35,7 @@ const Landing = () => {
               bg-clip-text 
               text-transparent 
               drop-shadow-[0_0_20px_rgba(255,255,255,0.35)] ease-out
-              text-5xl sm:text-7xl md:text-[7.5rem] leading-[1] opacity-100 p-3
+              text-5xl sm:text-7xl md:text-[7.5rem] leading-[1] opacity-100 p-3 animate-fade-in
             `}
           >
             CustomStudy

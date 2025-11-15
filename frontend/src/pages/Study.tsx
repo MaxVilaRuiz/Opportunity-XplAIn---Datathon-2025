@@ -57,9 +57,9 @@ const Study = () => {
           </div>
 
           {/* Grid fields */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 animate-fade-in">
             {[...Array(15)].map((_, idx) => (
-              <div key={idx} className="animate-fade-in">
+              <div key={idx}>
                 <AttributeSelector
                   attributeNumber={idx + 1}
                   attributeName={names[idx]}
