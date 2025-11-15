@@ -39,14 +39,22 @@ const AttributeSelector = ({
   };
 
   return (
-    <Card className="p-6 bg-gradient-to-br from-card via-accent/10 to-primary/10 border-2 border-primary/30 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl shadow-xl">
-      <h3 className="text-xl font-bold text-primary mb-5 flex items-center gap-2">
-        <span className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-sm text-primary-foreground">
-          {attributeNumber}
-        </span>
+    <Card 
+      className="
+        p-6 
+        bg-white/5 
+        backdrop-blur-lg 
+        border border-white/10
+        hover:border-[#87D300]/40 
+        rounded-xl
+        shadow-lg hover:shadow-xl
+        transition-colors duration-300
+      "
+    >
+      <h3 className="text-xl font-bold text-white mb-5 flex items-center gap-2">
         {attributeName}
       </h3>
-      
+          
       <div className="space-y-4">
         <div className="flex items-center gap-4">
           <Input
@@ -56,13 +64,13 @@ const AttributeSelector = ({
             step={step}
             min={minValue}
             max={maxValue}
-            className="w-24 text-center font-medium"
+            className="w-24 text-center font-medium bg-white/10 text-white border-white/20"
           />
-          <span className="text-sm text-muted-foreground">
+          <span className="text-sm text-white/60">
             / {maxValue}
           </span>
         </div>
-        
+            
         <Slider
           value={[value]}
           onValueChange={handleSliderChange}

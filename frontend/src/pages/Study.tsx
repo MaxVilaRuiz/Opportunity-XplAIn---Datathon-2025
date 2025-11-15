@@ -31,66 +31,62 @@ const Study = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/10 via-accent/20 to-primary/100">
+    <div className="min-h-screen bg-gradient-to-br from-[#009530] via-[#00551b] to-[#002e0f] text-white relative overflow-hidden">
       {/* Header with colored bar and decorative elements */}
-      <header className="bg-gradient-to-r from-primary via-primary/95 to-accent h-16 flex items-center justify-center shadow-lg relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-1/4 w-32 h-32 bg-primary-foreground rounded-full blur-2xl" />
-          <div className="absolute top-0 right-1/4 w-32 h-32 bg-primary-foreground rounded-full blur-2xl" />
-        </div>
-        <div className="relative flex items-center gap-3">
-          <Sparkles className="text-primary-foreground" size={28} />
-          <h1 className="text-3xl font-bold text-primary-foreground tracking-wide">
-            Study Form
+      <header className="w-full border-b border-white/10 backdrop-blur-xl bg-[#002e0f]/60 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          
+          <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-[#87D300] to-white bg-clip-text text-transparent">
+            Opportunity Study Form
           </h1>
-          <Sparkles className="text-primary-foreground" size={28} />
+
+          <Sparkles className="text-[#87D300]" size={28} />
         </div>
       </header>
 
       {/* Main content area */}
-      <main className="container mx-auto px-4 py-8 max-w-5xl relative">
-        {/* Decorative floating elements with more color */}
-        <div className="absolute top-10 right-10 w-40 h-40 bg-accent/30 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 left-10 w-48 h-48 bg-primary/20 rounded-full blur-3xl animate-pulse delay-700" />
-        <div className="absolute top-1/3 left-1/4 w-36 h-36 bg-accent/20 rounded-full blur-2xl animate-pulse delay-500" />
-        <div className="absolute bottom-1/3 right-1/4 w-32 h-32 bg-primary/15 rounded-full blur-2xl animate-pulse delay-300" />
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((num, idx) => (
-            <div
-              key={num}
-              className="animate-fade-in"
-              style={{ animationDelay: `${idx * 80}ms` }}
+      <main className="max-w-6xl mx-auto mt-12 px-6 pb-20 relative">
+        <section className="bg-white/10 supports-backdrop-blur:bg-white/5 rounded-2xl p-8 shadow-2xl border border-white/20 space-y-8 will-change-contents">
+
+          {/* Title inside form */}
+          <div className="text-center space-y-2">
+            <h2 className="text-2xl font-semibold text-white">Fill in the opportunity attributes</h2>
+            <p className="text-white/70 max-w-2xl mx-auto text-sm">
+              Provide the data for this opportunity. These attributes will be used to predict win/loss probability.
+            </p>
+          </div>
+
+          {/* Grid fields */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[...Array(15)].map((_, idx) => (
+              <div key={idx} className="animate-fade-in">
+                <AttributeSelector
+                  attributeNumber={idx + 1}
+                  attributeName={names[idx]}
+                  defaultValue={attributes[idx]}
+                  onChange={(value) => {
+                    const newAttributes = [...attributes];
+                    newAttributes[idx] = value;
+                    setAttributes(newAttributes);
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Submit */}
+          <div className="pt-6 flex justify-center">
+            <Button
+              size="lg"
+              onClick={handleSubmit}
+              className="bg-primary-foreground/90 text-primary hover:bg-primary-foreground text-lg px-8 py-6 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group"
             >
-              <AttributeSelector
-                attributeNumber={num}
-                attributeName={names[num - 1]}
-                defaultValue={attributes[idx]}
-                onChange={(value) => {
-                  const newAttributes = [...attributes];
-                  newAttributes[idx] = value;
-                  setAttributes(newAttributes);
-                }}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Submit Button */}
-        <div className="mt-10 flex justify-center animate-fade-in" style={{ animationDelay: "500ms" }}>
-          <Button 
-            onClick={handleSubmit}
-            size="lg"
-            className="group bg-gradient-to-r from-bg-grey-max to-grey hover:from-accent hover:to-primary/90 text-primary-foreground font-bold px-8 py-6 text-lg shadow-xl transition-all duration-300 hover:scale-105"
-          >
-            Enviar Formulario
-            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </div>
-
-        {/* Bottom decorative gradient */}
-        <div className="mt-12 h-24 bg-gradient-to-t from-transparent to-transparent rounded-t-3xl" />
-      </main>
+              Submit
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </section>
+        </main>
     </div>
   );
 };

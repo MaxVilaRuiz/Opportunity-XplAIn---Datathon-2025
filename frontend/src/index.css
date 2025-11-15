@@ -151,3 +151,28 @@ All colors MUST be HSL.
 .bg-grey-max{
   background-color: #B5B0AD;
 }
+
+.bg-grid {
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes fadeInSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInSmooth 0.6s ease-out forwards;
+}
+
+.will-change-contents {
+  will-change: opacity, transform;
+}
