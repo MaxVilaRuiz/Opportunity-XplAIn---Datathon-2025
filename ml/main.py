@@ -41,3 +41,10 @@ acu = accuracy_score(Y, y_hat)
 f1 = f1_score(Y, y_hat)
 print("Accuracy: ", acu)
 print("F1: ", f1)
+
+# save model to disk
+model.save('Schneider NN Model')
+
+# to reload model:
+# model = load_model('Schneider NN Model')
+# works in another python file
