@@ -7,7 +7,23 @@ import { Sparkles, ArrowRight } from "lucide-react";
 const Study = () => {
   const navigate = useNavigate();
   const [attributes, setAttributes] = useState([50, 75, 25, 60, 90]);
-
+  const names = [
+    "Product A sold in the past",
+    "Product B sold in the past",
+    "A recomendations",
+    "A product",
+    "B product",
+    "C product",
+    "D product",
+    "Hit rate",
+    "Iterations",
+    "Contracts",
+    "Initial month",
+    "Time opened",
+    "Competitor Z",
+    "Comptetitor X",
+    "Comptetitor Y"
+  ]
   const handleSubmit = () => {
     // Aquí se enviarán los datos al backend
     console.log("Atributos enviados:", attributes);
@@ -25,7 +41,7 @@ const Study = () => {
         <div className="relative flex items-center gap-3">
           <Sparkles className="text-primary-foreground" size={28} />
           <h1 className="text-3xl font-bold text-primary-foreground tracking-wide">
-            CustomStudy
+            Study Form
           </h1>
           <Sparkles className="text-primary-foreground" size={28} />
         </div>
@@ -40,7 +56,7 @@ const Study = () => {
         <div className="absolute bottom-1/3 right-1/4 w-32 h-32 bg-primary/15 rounded-full blur-2xl animate-pulse delay-300" />
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-          {[1, 2, 3, 4, 5].map((num, idx) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((num, idx) => (
             <div
               key={num}
               className="animate-fade-in"
@@ -48,6 +64,7 @@ const Study = () => {
             >
               <AttributeSelector
                 attributeNumber={num}
+                attributeName={names[num - 1]}
                 defaultValue={attributes[idx]}
                 onChange={(value) => {
                   const newAttributes = [...attributes];

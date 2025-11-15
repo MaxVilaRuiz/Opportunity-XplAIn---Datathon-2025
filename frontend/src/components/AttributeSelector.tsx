@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 
 interface AttributeSelectorProps {
   attributeNumber: number;
+  attributeName?: string;
   minValue?: number;
   maxValue?: number;
   step?: number;
@@ -14,6 +15,7 @@ interface AttributeSelectorProps {
 
 const AttributeSelector = ({ 
   attributeNumber, 
+  attributeName = `Atributo ${attributeNumber}`,
   minValue = 0, 
   maxValue = 100, 
   step = 0.1,
@@ -42,7 +44,7 @@ const AttributeSelector = ({
         <span className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-sm text-primary-foreground">
           {attributeNumber}
         </span>
-        Attribute {attributeNumber}
+        {attributeName}
       </h3>
       
       <div className="space-y-4">
