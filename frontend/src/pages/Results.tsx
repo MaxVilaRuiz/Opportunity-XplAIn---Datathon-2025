@@ -44,6 +44,7 @@ const Results = () => {
   const summary = Array.isArray(rawSummary)
     ? rawSummary.join("\n\n")
     : rawSummary || "";
+  const binary_result = result?.response > 0.5;
 
   console.log("Data received from Study:", result);
 
@@ -134,7 +135,35 @@ const Results = () => {
               <ScrollArea className="max-h-screen overflow-y-auto px-4 py-4">
                 <div className="space-y-6">
 
-                  {/* Mensaje IA */}
+                  {/* AI messages */}
+                  <div className="flex items-start gap-3">
+                    <div className="
+                      w-7 h-7 sm:w-9 sm:h-9 
+                      rounded-full 
+                      bg-gradient-to-br from-[#009530] to-[#87D300] 
+                      flex items-center justify-center 
+                      text-black text-sm sm:text-base font-bold
+                    ">
+                      AI
+                    </div>
+                    <div className="
+                      bg-white/10 
+                      backdrop-blur-md 
+                      px-4 py-3 
+                      rounded-xl 
+                      border border-white/10
+                      text-white 
+                      shadow-lg
+                      leading-relaxed
+                      max-w-[85%]
+                    ">
+                      {binary_result
+                        ? "The customer is highly likely to make a purchase."
+                        : "The customer is unlikely to proceed with the purchase."
+                      }
+                    </div>
+                  </div>
+
                   <div className="flex items-start gap-3">
                     <div className="
                       w-7 h-7 sm:w-9 sm:h-9 
