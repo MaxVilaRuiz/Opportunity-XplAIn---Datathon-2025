@@ -21,8 +21,8 @@ const Study = () => {
     "Initial month",
     "Time opened",
     "Competitor Z",
-    "Comptetitor X",
-    "Comptetitor Y",
+    "Competitor X",
+    "Competitor Y",
     "Customer in Iberia"
   ]
   const handleSubmit = async () => {
