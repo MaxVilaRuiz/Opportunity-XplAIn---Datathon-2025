@@ -18,6 +18,15 @@ const generateRandomData = () => {
 };
 
 const Results = () => {
+  const location = useLocation();
+  const rawSummary = location.state?.result?.summary;
+  const summary =
+  Array.isArray(rawSummary)
+    ? rawSummary.join("\n\n")
+    : rawSummary || "";
+  
+  console.log("Data received from Study: ", summary);
+
   const chartData = generateRandomData();
   const navigate = useNavigate();
 
@@ -123,50 +132,11 @@ const Results = () => {
                       leading-relaxed
                       max-w-[85%]
                     ">
-                      Basado en los atributos seleccionados, he generado un análisis detallado del potencial de la oportunidad.
+                      <pre className="whitespace-pre-wrap text-white/90 leading-relaxed">
+                        {summary}
+                      </pre>
                     </div>
                   </div>
-
-                  {/* Mensaje IA */}
-                  <div className="flex items-start gap-3">
-                    <div className="
-                        w-7 h-7 sm:w-9 sm:h-9 
-                        rounded-full 
-                        bg-gradient-to-br from-[#009530] to-[#87D300] 
-                        flex items-center justify-center 
-                        text-black text-sm sm:text-base font-bold
-                      ">
-                        AI
-                      </div>
-                    <div className="
-                      bg-white/10 
-                      backdrop-blur-md 
-                      px-4 py-3 
-                      rounded-xl 
-                      border border-white/10
-                      text-white 
-                      shadow-lg
-                      leading-relaxed
-                      max-w-[85%]
-                    ">
-                      Los gráficos comparan el rendimiento actual con los valores recomendados, permitiéndote identificar áreas clave de mejora.
-                    </div>
-                  </div>
-
-                  {/* Mensaje Nota */}
-                  <div className="
-                    bg-white/5 
-                    rounded-xl 
-                    border border-white/10 
-                    p-4 
-                    shadow-inner
-                  ">
-                    <p className="text-[#87D300] font-medium mb-1">Nota</p>
-                    <p className="text-white/80 text-sm">
-                      Los datos mostrados son simulados. Una vez conectado el backend, la IA generará una explicación completamente personalizada.
-                    </p>
-                  </div>
-
                 </div>
               </ScrollArea>
             </CardContent>

@@ -22,7 +22,6 @@ class PredictInput(BaseModel):
 
 @router.post("/")
 async def predict_values(data: PredictInput):
-    # Here we call the model, these are simulated data
     X_input = np.array(data.attributes).reshape(1, -1)
     BASE_PATH = Path(__file__).resolve().parents[4]
     DATA_PATH = BASE_PATH / "ml" / "data" / "dataset.csv"

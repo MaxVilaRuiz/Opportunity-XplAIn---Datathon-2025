@@ -38,7 +38,7 @@ const Study = () => {
       const result = await response.json();
       console.log("Backend answer: ", result);
 
-      navigate("/results");
+      navigate("/results", {state: {result, attributes}});
     }
     catch (error) {
       console.error("Error sending data: ", error);
