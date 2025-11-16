@@ -18,17 +18,41 @@ const generateRandomData = () => {
 };
 
 const Results = () => {
+  const names = [
+    "Product A sold in the past",
+    "Product B sold in the past",
+    "A recomendations",
+    "A product",
+    "C product",
+    "D product",
+    "Hit rate",
+    "Interactions",
+    "Contracts",
+    "Initial month",
+    "Time opened",
+    "Competitor Z",
+    "Comptetitor X",
+    "Comptetitor Y",
+    "Customer in Iberia"
+  ];
+
   const location = useLocation();
-  const rawSummary = location.state?.result?.summary;
-  const summary =
-  Array.isArray(rawSummary)
+  const result = location.state?.result;
+  const navigate = useNavigate();
+
+  const rawSummary = result?.summary;
+  const summary = Array.isArray(rawSummary)
     ? rawSummary.join("\n\n")
     : rawSummary || "";
-  
-  console.log("Data received from Study: ", summary);
 
-  const chartData = generateRandomData();
-  const navigate = useNavigate();
+  console.log("Data received from Study:", result);
+
+  const chartData =
+    result?.features?.map((featIndex, i) => ({
+      name: names[featIndex],
+      shap: result.values[i][0], 
+    })) || [];
+    console.log("chartData: ", chartData);
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -163,23 +187,21 @@ const Results = () => {
             <CardTitle className="text-white font-semibold tracking-wide">Bar Graph</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <ResponsiveContainer width="100%" height={250}>
-                  <BarChart data={chartData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                    <XAxis dataKey="name" stroke="hsl(var(--foreground))" />
-                    <YAxis stroke="hsl(var(--foreground))" />
-                    <Tooltip 
-                      contentStyle={{ 
-                        backgroundColor: "hsl(var(--card))",
-                        border: "1px solid hsl(var(--border))",
-                        borderRadius: "0.5rem"
-                      }}
-                    />
-                    <Legend />
-                    <Bar dataKey="value" fill="hsl(var(--primary))" name="Actual" />
-                    <Bar dataKey="target" fill="hsl(var(--accent))" name="Objective" />
-                  </BarChart>
-                </ResponsiveContainer>
+              <ResponsiveContainer width="100%" height={250}>
+                <BarChart data={chartData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" stroke="#ffffff" tick={{ fill: "#ffffff" }} />
+                  <YAxis stroke="#ffffff" tick={{ fill: "#ffffff" }} />
+                  <Tooltip />
+                  <Legend />
+                  
+                  <Bar 
+                    dataKey="shap" 
+                    name="SHAP value"
+                    fill="#87D300"
+                  />
+                </BarChart>
+              </ResponsiveContainer>
               </CardContent>
             </Card>
 
@@ -203,21 +225,22 @@ const Results = () => {
               </CardHeader>
               <CardContent className="pt-6">
                 <ResponsiveContainer width="100%" height={250}>
-                  <LineChart data={chartData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                    <XAxis dataKey="name" stroke="hsl(var(--foreground))" />
-                    <YAxis stroke="hsl(var(--foreground))" />
-                    <Tooltip 
-                      contentStyle={{ 
-                        backgroundColor: "hsl(var(--card))",
-                        border: "1px solid hsl(var(--border))",
-                        borderRadius: "0.5rem"
-                      }}
-                    />
-                    <Legend />
-                    <Line type="monotone" dataKey="value" stroke="hsl(var(--primary))" strokeWidth={3} name="Actual" />
-                    <Line type="monotone" dataKey="target" stroke="hsl(var(--accent))" strokeWidth={3} name="Objective" />
-                  </LineChart>
+                <LineChart data={chartData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" stroke="#ffffff" tick={{ fill: "#ffffff" }} />
+                  <YAxis stroke="#ffffff" tick={{ fill: "#ffffff" }} />
+                  <Tooltip />
+                  <Legend />
+
+                  <Line
+                    type="monotone"
+                    dataKey="shap"
+                    stroke="#87D300"
+                    strokeWidth={3}
+                    dot={false}
+                    name="SHAP value"
+                  />
+                </LineChart>
                 </ResponsiveContainer>
               </CardContent>
             </Card>
