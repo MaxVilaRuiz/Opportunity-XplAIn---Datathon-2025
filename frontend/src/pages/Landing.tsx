@@ -38,7 +38,7 @@ const Landing = () => {
               text-5xl sm:text-7xl md:text-[7.5rem] leading-[1] opacity-100 p-3 animate-fade-in
             `}
           >
-            CustomStudy
+            Opportunity XplAIn
           </h1>
         </div>
       </div>

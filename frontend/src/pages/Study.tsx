@@ -46,15 +46,15 @@ const Study = () => {
   };
 
   const descriptions = [
-    "Historical sales of Product A with the costumer concerned",
-    "Historical sales of Product B with the costumer concerned",
-    "INdicates if Product A was recommended in the past to the costumer",
+    "Historical sales of Product A with the customer concerned",
+    "Historical sales of Product B with the customer concerned",
+    "INdicates if Product A was recommended in the past to the customer",
     "Amount we are trying to sell of product A",
     "Amount we are trying to sell of product B",
     "Amount we are trying to sell of product C",
     "Amount we are trying to sell of product D",
     "Customer succes rate in previous interactions",
-    "Number of iteractions with the costumer",
+    "Number of iteractions with the customer",
     "Month when the opportunity was created",
     "Indicates if the opportunity has been opened for a long time",
     "Pressence of competitor Z in the opportunity",
