@@ -45,7 +45,7 @@ async def predict_values(data: PredictInput):
     shap_result = explain_row(data_df, X)
     response = process_w_llm(shap_result)
     
-    return PredictResponse(summary=response, features=shap_result["features"], 
+    return PredictResponse(summary=response, response=y_hat[0], features=shap_result["features"], 
     values=shap_result["values"], base_value=shap_result["base_value"], prediction=shap_result["prediction"])
 
 @router.post("/")

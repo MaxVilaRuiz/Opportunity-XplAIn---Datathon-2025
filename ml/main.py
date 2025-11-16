@@ -30,7 +30,7 @@ adam = tf.keras.optimizers.Adam(learning_rate=0.001)
 model.compile(loss='binary_crossentropy', optimizer=adam, metrics=["accuracy"])
 
 # train model with epochs
-model.fit(X_train, Y_train, epochs=2000)
+model.fit(X_train, Y_train, epochs=6500)
 
 # prediction with test data
 y_hat = model.predict(X_test)
@@ -73,7 +73,7 @@ conf_mat = confusion_matrix(Y_test, y_hat)
 print(conf_mat)
 
 # save model to disk
-model.save('models/SchneiderNNModel2000.h5')
+model.save('models/SchneiderNNModel6500.h5')
 
 # to reload model:
 # model = load_model('SchneiderNNModel.h5')
