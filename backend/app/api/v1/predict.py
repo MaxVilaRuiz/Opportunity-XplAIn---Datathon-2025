@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from app.schemas.predict_schema import PredictRequest, PredictResponse
-# from app.models.model_loader import model
+from app.models.model_loader import model
 
 router = APIRouter()
 
@@ -16,7 +16,7 @@ def predict_endpoint(payload: PredictRequest):
 def dummy_predict():
     return {"message": "Predict endpoint working..."}
 
-# @router.get("/test-model")
-# def test_model_loaded():
-#     num_layers = len(model.layers)
-#     return {"status": "model_loaded", "num_layers": num_layers}
+@router.get("/test-model")
+def test_model_loaded():
+    num_layers = len(model.layers)
+    return {"status": "model_loaded", "num_layers": num_layers}
